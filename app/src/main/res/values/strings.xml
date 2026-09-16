@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Emoji Guess</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_content">Emoji Guess respects your privacy. This application uses Google Mobile Ads to deliver advertisements. Google Mobile Ads may collect device identifiers and usage data to personalize and optimize advertising experiences.\n\nFor more details, please review Google\'s privacy policy.\n\nDeveloper URL: https://example.com/privacy-policy</string>
+</resources>
