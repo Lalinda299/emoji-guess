@@ -1,12 +1,12 @@
-package com.example.emojiguess.game
+package com.lalinda.emojiguess.game
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.emojiguess.data.GamePreferences
-import com.example.emojiguess.data.ProceduralQuestionGenerator
-import com.example.emojiguess.data.Question
-import com.example.emojiguess.data.QuestionBank
+import com.lalinda.emojiguess.data.GamePreferences
+import com.lalinda.emojiguess.data.ProceduralQuestionGenerator
+import com.lalinda.emojiguess.data.Question
+import com.lalinda.emojiguess.data.QuestionBank
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow

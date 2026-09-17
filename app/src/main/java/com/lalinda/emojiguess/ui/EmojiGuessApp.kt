@@ -1,4 +1,4 @@
-package com.example.emojiguess.ui
+package com.lalinda.emojiguess.ui
 
 import android.app.Activity
 import android.os.Build
@@ -23,18 +23,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.example.emojiguess.ads.AdManager
-import com.example.emojiguess.audio.BgmContext
-import com.example.emojiguess.audio.SoundManager
-import com.example.emojiguess.game.GameEvent
-import com.example.emojiguess.game.GameScreenState
-import com.example.emojiguess.game.GameViewModel
+import com.lalinda.emojiguess.ads.AdManager
+import com.lalinda.emojiguess.audio.BgmContext
+import com.lalinda.emojiguess.audio.SoundManager
+import com.lalinda.emojiguess.game.GameEvent
+import com.lalinda.emojiguess.game.GameScreenState
+import com.lalinda.emojiguess.game.GameViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalLifecycleOwner
 
 @Composable
 fun EmojiGuessApp(

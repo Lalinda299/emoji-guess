@@ -1,4 +1,4 @@
-package com.example.emojiguess.data
+package com.lalinda.emojiguess.data
 
 import kotlin.random.Random
 

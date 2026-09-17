@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.emojiguess"
+    namespace = "com.lalinda.emojiguess"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.emojiguess"
+        applicationId = "com.lalinda.emojiguess"
         minSdk = 23
         targetSdk = 35
         versionCode = 1

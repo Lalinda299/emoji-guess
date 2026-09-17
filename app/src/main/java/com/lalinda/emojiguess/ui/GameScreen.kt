@@ -1,4 +1,4 @@
-package com.example.emojiguess.ui
+package com.lalinda.emojiguess.ui
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -24,7 +24,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
@@ -44,7 +46,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.emojiguess.game.GameUiState
+import com.lalinda.emojiguess.game.GameUiState
 import kotlinx.coroutines.launch
 
 @Composable
@@ -465,7 +467,7 @@ fun AnswerButton(
 @Composable
 fun LiveGuideBanner(
     uiState: GameUiState,
-    currentQState: com.example.emojiguess.game.CurrentQuestionState,
+    currentQState: com.lalinda.emojiguess.game.CurrentQuestionState,
     modifier: Modifier = Modifier
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "LiveGuide")

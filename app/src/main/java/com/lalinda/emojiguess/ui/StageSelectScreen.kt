@@ -1,4 +1,4 @@
-package com.example.emojiguess.ui
+package com.lalinda.emojiguess.ui
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -42,7 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.emojiguess.game.GameUiState
+import com.lalinda.emojiguess.game.GameUiState
 
 data class StageInfo(
     val id: Int,

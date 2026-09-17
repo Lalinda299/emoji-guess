@@ -1,4 +1,4 @@
-package com.example.emojiguess.ui
+package com.lalinda.emojiguess.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

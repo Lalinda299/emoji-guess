@@ -1,4 +1,4 @@
-package com.example.emojiguess.data
+package com.lalinda.emojiguess.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore

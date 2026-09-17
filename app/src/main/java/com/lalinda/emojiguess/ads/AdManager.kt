@@ -1,4 +1,4 @@
-package com.example.emojiguess.ads
+package com.lalinda.emojiguess.ads
 
 import android.app.Activity
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.example.emojiguess.audio
+package com.lalinda.emojiguess.audio
 
 import android.content.Context
 import android.media.AudioAttributes
