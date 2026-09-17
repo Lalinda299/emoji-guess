@@ -12,22 +12,20 @@ import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
 /**
- * AdConfig holds the AdMob Ad Unit IDs used throughout the app.
- *
- * IMPORTANT: Replace these official Google test IDs with your production AdMob IDs before publishing.
+ * AdConfig holds the Production AdMob Ad Unit IDs used throughout the app.
  */
 object AdConfig {
-    // Official Test AdMob Application ID (Set in AndroidManifest.xml)
-    // const val APP_ID = "ca-app-pub-3940256099942544~3347511713"
+    // Production AdMob Application ID (Set in AndroidManifest.xml)
+    const val APP_ID = "ca-app-pub-2446392006484177~5828347603"
 
-    // Official Test Banner Unit ID
-    const val BANNER_ID = "ca-app-pub-3940256099942544/9214589741"
+    // Production Banner Unit ID
+    const val BANNER_ID = "ca-app-pub-2446392006484177/6930510432"
 
-    // Official Test Interstitial Unit ID
-    const val INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712"
+    // Production Interstitial Unit ID
+    const val INTERSTITIAL_ID = "ca-app-pub-2446392006484177/1243069489"
 
-    // Official Test Rewarded Unit ID
-    const val REWARDED_ID = "ca-app-pub-3940256099942544/5224354917"
+    // Production Rewarded Unit ID
+    const val REWARDED_ID = "ca-app-pub-2446392006484177/4196535884"
 }
 
 class AdManager(private val context: Context) {
