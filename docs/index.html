@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imoji Guess – Fun Emoji Puzzle Game</title>
+    <meta name="description" content="imoji Guess is a fun and addictive emoji puzzle game for Android. Decode emoji combinations and guess the hidden word or phrase!">
+
+    <!-- ✅ Replace the content value below with your Google Search Console verification code -->
+    <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+        :root {
+            --bg-color: #0d0e1b;
+            --card-bg: #1a1c33;
+            --primary: #8a2be2;
+            --text-color: #e0e0e0;
+            --accent-color: #00e5ff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Background blobs ── */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .blob-1 { width: 500px; height: 500px; background: var(--primary); top: -120px; left: -120px; }
+        .blob-2 { width: 400px; height: 400px; background: var(--accent-color); bottom: -100px; right: -100px; }
+
+        /* ── Nav ── */
+        nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* ── Privacy Policy Banner ── */
+        .policy-banner {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 229, 255, 0.07);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+            text-align: center;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .policy-banner a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            margin: 0 6px;
+            font-weight: 600;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 80px 24px 60px;
+        }
+        .emoji-row {
+            font-size: 3rem;
+            letter-spacing: 8px;
+            margin-bottom: 28px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── About box ── */
+        .about-box {
+            position: relative;
+            z-index: 5;
+            max-width: 680px;
+            margin: 0 auto 36px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px 32px;
+            text-align: left;
+        }
+        .about-box h2 {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .about-box p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.75;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), #5c0ea6);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(138, 43, 226, 0.4);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(138,43,226,0.55); }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            color: var(--accent-color);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(0,229,255,0.15); transform: translateY(-3px); }
+
+        /* ── Features ── */
+        .features {
+            position: relative;
+            z-index: 5;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .feature-icon { font-size: 2.4rem; margin-bottom: 14px; }
+        .feature-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+        .feature-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+        /* ── Footer ── */
+        footer {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #555;
+            font-size: 0.88rem;
+        }
+        footer a { color: #777; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav>
+        <div class="nav-logo">🎮 imoji Guess</div>
+        <div class="nav-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+    </nav>
+
+    <!-- Prominent privacy policy link for Google verification -->
+    <div class="policy-banner">
+        📄 View our <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a>
+    </div>
+
+    <section class="hero">
+        <div class="emoji-row">🧠 🤔 💡 🎯 🏆</div>
+        <h1>Can you guess the<br><span>Emoji Puzzle?</span></h1>
+
+        <!-- Clear app description for Google review -->
+        <div class="about-box">
+            <h2>About imoji Guess</h2>
+            <p>
+                <strong>imoji Guess</strong> is a free Android puzzle game where players decode emoji combinations to guess hidden words and phrases. The app features hundreds of hand-crafted emoji riddles, daily challenges, a hint system, in-game coins, sound effects, and vibration feedback — all with no account or login required.
+            </p>
+        </div>
+
+        <div class="btn-group">
+            <a href="https://play.google.com/store/apps/details?id=com.lalinda.emojiguess" target="_blank" class="btn-primary">
+                ▶ Get it on Google Play
+            </a>
+            <a href="privacy-policy.html" class="btn-secondary">
+                🔒 Privacy Policy
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>100s of Puzzles</h3>
+            <p>Hundreds of carefully crafted emoji riddles across multiple stages and difficulty levels.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Daily Challenges</h3>
+            <p>A fresh new puzzle every day to keep your streak going and earn bonus coins.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Smart Hints</h3>
+            <p>Stuck? Use hints wisely to reveal letters and advance to the next stage.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎵</div>
+            <h3>Immersive Sound</h3>
+            <p>Satisfying sound effects and haptic feedback make every correct answer feel amazing.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 imoji Guess. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="https://github.com/Lalinda299/emoji-guess" target="_blank">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>
